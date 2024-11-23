@@ -1,0 +1,57 @@
+.top-donors-section {
+    padding: 3rem 2rem;
+    background: #f5f5f5;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.top-donors-section h2 {
+    font-size: 2.5rem;
+    color: #2e7d32;
+    margin-bottom: 1rem;
+}
+
+.top-donors-section p {
+    font-size: 1.2rem;
+    color: #616161;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.donors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.donor-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.donor-item .donor-rank {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+.donor-item .donor-name {
+    flex: 1;
+    text-align: center;
+    color: #333333;
+}
+
+.donor-item .donor-amount {
+    font-weight: 700;
+    color: #1e5631;
+}
