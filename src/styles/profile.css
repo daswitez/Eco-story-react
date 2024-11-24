@@ -1,0 +1,127 @@
+:root {
+    --green-forest: #1e5631;
+    --dark-green: #2e7d32;
+    --green-light: #a3d9a5;
+    --white: #ffffff;
+    --gray-light: #f7f7f7;
+    --text-dark: #333;
+    --text-light: #616161;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--gray-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+.profile-section {
+    margin: 6rem auto 2rem;
+    max-width: 800px;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--green-forest);
+    margin: 0;
+}
+
+.profile-role {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+.profile-info {
+    margin-bottom: 2rem;
+}
+
+.profile-info h3 {
+    font-size: 1.5rem;
+    color: var(--green-forest);
+    margin-bottom: 1rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.info-item {
+    background: var(--gray-light);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-label {
+    font-weight: 700;
+    color: var(--text-light);
+    display: block;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.profile-edit h3 {
+    font-size: 1.5rem;
+    color: var(--green-forest);
+    margin-bottom: 1rem;
+}
+
+.edit-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.edit-form label {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.edit-form input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.edit-form .primary-btn {
+    padding: 0.8rem 1.5rem;
+    background: var(--green-forest);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.edit-form .primary-btn:hover {
+    background: var(--green-light);
+}

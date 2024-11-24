@@ -1,0 +1,158 @@
+:root {
+    --green-forest: #1e5631;
+    --green-light: #a3d9a5;
+    --white: #ffffff;
+    --gray-light: #f7f7f7;
+    --text-dark: #333;
+    --text-light: #616161;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--gray-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 8rem auto;
+    max-width: 1200px;
+    width: 90%;
+    text-align: center;
+}
+
+.intro-section h2 {
+    font-size: 2.5rem;
+    color: var(--green-forest);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.intro-section p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.help-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.faq {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq h3 {
+    font-size: 2.2rem;
+    color: var(--green-forest);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.faq details {
+    margin-bottom: 1.5rem;
+    background: var(--gray-light);
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq summary {
+    font-weight: bold;
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+.faq p {
+    margin-top: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+
+.project-cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.project-cards .card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    width: 280px;
+}
+
+.project-cards .card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.project-cards .card h4 {
+    font-size: 1.2rem;
+    color: var(--green-forest);
+    margin: 1rem 0;
+}
+
+.project-cards .card button {
+    background: var(--green-forest);
+    color: var(--white);
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.3s ease;
+}
+
+.project-cards .card button:hover {
+    background: var(--green-light);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: var(--white);
+    margin-top: 2rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .faq {
+        padding: 1.5rem;
+    }
+
+    .faq h3 {
+        font-size: 1.8rem;
+    }
+
+    .project-cards .card {
+        width: 100%;
+        max-width: 90%;
+    }
+}
