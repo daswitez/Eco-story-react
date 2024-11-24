@@ -20,6 +20,9 @@ header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
+    color: var(--green-forest);
+    font-weight: bold;
     transition: transform 0.3s ease;
 }
 
@@ -35,10 +38,14 @@ header {
 
 .nav-link {
     text-decoration: none;
-    color: #333;
+    color: var(--text-dark);
     position: relative;
     padding: 0.5rem 0;
     transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--green-forest);
 }
 
 .nav-link::after {
@@ -50,10 +57,6 @@ header {
     height: 2px;
     background: var(--green-forest);
     transition: width 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--green-forest);
 }
 
 .nav-link:hover::after {
@@ -80,10 +83,23 @@ header {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .secondary-link:hover {
     background: var(--green-forest);
     color: var(--white);
+}
+
+.user-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.user-icon:hover {
+    transform: scale(1.1);
 }
