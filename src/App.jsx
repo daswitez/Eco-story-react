@@ -9,6 +9,8 @@ import HelpCenter from "./pages/HelpCenter.jsx";
 import TipsPage from "./pages/TipsPage.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
 import Footer from "./components/Footer.jsx";
+import Register from "./pages/Register.jsx";
+import Login from "./pages/Login.jsx";
 
 function App() {
     return (
@@ -32,6 +34,8 @@ function App() {
                 <Route path="/help-center" element={<HelpCenter />} />
                 <Route path="/tips-center" element={<TipsPage />} />
                 <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<UserProfile />} />
             </Routes>
         </Router>

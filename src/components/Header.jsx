@@ -1,8 +1,14 @@
-import { Link } from 'react-router-dom';
-import '../styles/header.css';
-
+import { Link } from "react-router-dom";
+import "../styles/header.css";
+import { useState } from "react";
 
 function Header() {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen);
+    };
+
     return (
         <header>
             <nav className="nav-container">
@@ -21,6 +27,13 @@ function Header() {
                     <Link to="/help-center" className="nav-link">Centro de Ayuda</Link>
                     <Link to="/tips-center" className="nav-link">Consejos</Link>
                     <Link to="/projects" className="nav-link">Proyectos</Link>
+                    <div className="nav-link dropdown" onClick={toggleDropdown}>
+                        <span>Sesión</span>
+                        <div className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}>
+                            <Link to="/login" className="dropdown-item">Iniciar Sesión</Link>
+                            <Link to="/register" className="dropdown-item">Registrarse</Link>
+                        </div>
+                    </div>
                     <Link to="/profile" className="nav-link">
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/149/149071.png"

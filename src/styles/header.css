@@ -103,3 +103,48 @@ header {
 .user-icon:hover {
     transform: scale(1.1);
 }
+/* Estilo general para la navegación */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+}
+
+/* Dropdown específico */
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    padding: 0.5rem 0;
+    z-index: 1000;
+    min-width: 150px;
+    text-align: left;
+}
+
+.dropdown-menu.open {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: var(--light-gray);
+    color: var(--green-forest);
+}
