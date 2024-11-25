@@ -1,0 +1,88 @@
+.auth-container {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.auth-container h1 {
+    font-size: 2rem;
+    color: var(--green-forest);
+    margin-bottom: 1.5rem;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.auth-container input,
+.auth-container select {
+    padding: 0.8rem;
+    border: 1px solid var(--gray-dark);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-container input:focus,
+.auth-container select:focus {
+    border-color: var(--green-light);
+    box-shadow: 0 0 5px rgba(163, 217, 165, 0.5);
+}
+
+.auth-container select {
+    appearance: none;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.auth-container button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background: var(--green-forest);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auth-container button:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+}
+
+.auth-container p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.auth-container a {
+    color: var(--green-forest);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.auth-container a:hover {
+    color: var(--green-light);
+}
+
+/* Layout centrado */
+.auth-page {
+    background: var(--gray-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
