@@ -11,7 +11,7 @@ function ProjectsPage() {
             <Header /> {/* Navegación global */}
             <main className="projects-main">
                 <section id="proyectos">
-                    <h2>Proyectos Destacados</h2>
+                    <h2>Proyectos</h2>
                     <div className="proyectos-container">
                         <div className="proyecto">
                             <img src={santaCruzImage} alt="Reforestación en Santa Cruz" />

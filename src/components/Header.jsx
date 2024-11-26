@@ -1,12 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "../styles/header.css";
-import { useState } from "react";
 
 function Header() {
+    const [menuOpen, setMenuOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const location = useLocation();
+
+    // Cerrar el menú hamburguesa al cambiar de ruta
+    useEffect(() => {
+        setMenuOpen(false);
+    }, [location]);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
     };
 
     return (
@@ -21,27 +37,32 @@ function Header() {
                     </svg>
                     <span>Eco Acción</span>
                 </Link>
-                <div className="nav-links">
-                    <Link to="/" className="nav-link">Inicio</Link>
-                    <Link to="/fundraising" className="nav-link">Recaudación de Fondos</Link>
-                    <Link to="/help-center" className="nav-link">Centro de Ayuda</Link>
-                    <Link to="/tips-center" className="nav-link">Consejos</Link>
-                    <Link to="/projects" className="nav-link">Proyectos</Link>
+
+                {/* Menú hamburguesa */}
+                <button className="hamburger-menu" onClick={toggleMenu}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </button>
+
+                <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+                    <Link to="/" className="nav-link" onClick={closeMenu}>Inicio</Link>
+                    <Link to="/fundraising" className="nav-link" onClick={closeMenu}>Recaudación de Fondos</Link>
+                    <Link to="/help-center" className="nav-link" onClick={closeMenu}>Centro de Ayuda</Link>
+                    <Link to="/tips-center" className="nav-link" onClick={closeMenu}>Consejos</Link>
+                    <Link to="/projects" className="nav-link" onClick={closeMenu}>Proyectos</Link>
+
                     <div className="nav-link dropdown" onClick={toggleDropdown}>
-                        <span>Sesión</span>
-                        <div className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}>
-                            <Link to="/login" className="dropdown-item">Iniciar Sesión</Link>
-                            <Link to="/register" className="dropdown-item">Registrarse</Link>
-                        </div>
-                    </div>
-                    <Link to="/profile" className="nav-link">
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                             alt="Perfil"
                             className="user-icon"
                         />
-                        Mi Perfil
-                    </Link>
+                        <div className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}>
+                            <Link to="/login" className="dropdown-item">Iniciar Sesión</Link>
+                            <Link to="/register" className="dropdown-item">Registrarse</Link>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </header>

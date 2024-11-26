@@ -1,22 +1,51 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "../styles/auth.css";
+import { AuthContext } from "../context/AuthContext";
 
-function Login() {
+const Login = () => {
+    const { login } = useContext(AuthContext);
+    const [formData, setFormData] = useState({ email: "", password: "" });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await login(formData.email, formData.password);
+            alert("Inicio de sesión exitoso");
+        } catch (error) {
+            alert("Error: " + error.message);
+        }
+    };
+
     return (
         <div className="auth-page">
             <div className="auth-container">
                 <h1>Iniciar Sesión</h1>
-                <form>
-                    <input type="email" placeholder="Correo Electrónico" required />
-                    <input type="password" placeholder="Contraseña" required />
-                    <button type="submit">Entrar</button>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        name="email"
+                        type="email"
+                        placeholder="Correo"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="Contraseña"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <button type="submit">Iniciar Sesión</button>
                 </form>
-                <p>
-                    ¿No tienes una cuenta? <a href="/register">Regístrate</a>
-                </p>
             </div>
         </div>
     );
-}
+};
 
 export default Login;
