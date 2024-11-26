@@ -4,8 +4,6 @@ import "../styles/header.css";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-
     const location = useLocation();
 
     // Cerrar el menú hamburguesa al cambiar de ruta
@@ -15,10 +13,6 @@ function Header() {
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-    };
-
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
     };
 
     const closeMenu = () => {
@@ -52,17 +46,15 @@ function Header() {
                     <Link to="/tips-center" className="nav-link" onClick={closeMenu}>Consejos</Link>
                     <Link to="/projects" className="nav-link" onClick={closeMenu}>Proyectos</Link>
 
-                    <div className="nav-link dropdown" onClick={toggleDropdown}>
+                    {/* Enlace al perfil */}
+                    <Link to="/profile" className="nav-link profile-link" onClick={closeMenu}>
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                             alt="Perfil"
                             className="user-icon"
                         />
-                        <div className={`dropdown-menu ${dropdownOpen ? "open" : ""}`}>
-                            <Link to="/login" className="dropdown-item">Iniciar Sesión</Link>
-                            <Link to="/register" className="dropdown-item">Registrarse</Link>
-                        </div>
-                    </div>
+                        Mi Perfil
+                    </Link>
                 </div>
             </nav>
         </header>

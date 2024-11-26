@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "../styles/auth.css";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login } = useAuth();
     const [formData, setFormData] = useState({ email: "", password: "" });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,8 +17,9 @@ const Login = () => {
         try {
             await login(formData.email, formData.password);
             alert("Inicio de sesión exitoso");
+            navigate("/profile"); // Redirigir al perfil
         } catch (error) {
-            alert("Error: " + error.message);
+            alert("Error al iniciar sesión. Verifica tus credenciales.");
         }
     };
 

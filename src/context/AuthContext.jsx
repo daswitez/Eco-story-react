@@ -1,48 +1,66 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import api from "../services/api";
 
+// Crear el contexto de autenticación
 export const AuthContext = createContext();
 
+// Proveedor del contexto de autenticación
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    // Persistencia de usuario
     useEffect(() => {
         const storedUser = localStorage.getItem("user");
-        if (storedUser) setUser(JSON.parse(storedUser));
+        if (storedUser) {
+            setUser(JSON.parse(storedUser)); // Recuperar el usuario del almacenamiento local
+        }
     }, []);
 
-    // Función para iniciar sesión
     const login = async (email, password) => {
-        const response = await api.post("/login", { email, password });
-        if (response.status !== 200) {
-            throw new Error(response.data.message || "Error al iniciar sesión");
+        try {
+            const response = await api.post("/login", { email, password });
+            if (response.status !== 200) {
+                throw new Error(response.data.message || "Error al iniciar sesión");
+            }
+            const data = response.data;
+            localStorage.setItem("user", JSON.stringify(data.usuario)); // Guardar usuario en localStorage
+            localStorage.setItem("token", data.token); // Guardar token para peticiones futuras
+            setUser(data.usuario); // Actualizar estado de usuario
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error.message);
+            throw error;
         }
-        const data = response.data;
-        localStorage.setItem("user", JSON.stringify(data.usuario));
-        setUser(data.usuario);
     };
 
-    // Función para registrar usuarios
     const register = async (formData) => {
-        const response = await api.post("/registro", formData);
-        if (response.status !== 200) {
-            throw new Error(response.data.message || "Error al registrarse");
+        try {
+            const response = await api.post("/registro", formData);
+            if (response.status !== 200) {
+                throw new Error(response.data.message || "Error al registrarse");
+            }
+            return response.data;
+        } catch (error) {
+            console.error("Error al registrarse:", error.message);
+            throw error;
         }
-        return response.data;
     };
 
     const logout = () => {
-        localStorage.removeItem("user");
-        setUser(null);
+        localStorage.removeItem("user"); // Limpiar almacenamiento local
+        localStorage.removeItem("token");
+        setUser(null); // Limpiar estado de usuario
     };
 
     return (
-        <AuthContext.Provider value={{ user, setUser, login, register, logout }}>
+        <AuthContext.Provider value={{ user, login, register, logout }}>
             {children}
         </AuthContext.Provider>
     );
+};
+
+// Hook personalizado para consumir el contexto
+export const useAuth = () => {
+    return useContext(AuthContext);
 };
 
 AuthProvider.propTypes = {

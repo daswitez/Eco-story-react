@@ -19,7 +19,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await register(formData);
+            await register(formData); // Llamar a la función de registro en el contexto
             alert("Registro exitoso. Revisa tu correo para verificar tu cuenta.");
         } catch (error) {
             alert("Error: " + error.message);
@@ -56,9 +56,11 @@ const Register = () => {
                     />
                     <input
                         name="telefono"
+                        type="text"
                         placeholder="Teléfono"
                         value={formData.telefono}
                         onChange={handleChange}
+                        required
                     />
                     <select
                         name="rol"
@@ -66,9 +68,9 @@ const Register = () => {
                         onChange={handleChange}
                         required
                     >
-                        <option value="">Selecciona tu Rol</option>
+                        <option value="">Seleccionar Rol</option>
                         <option value="usuario">Usuario</option>
-                        <option value="empresa">Empresa</option>
+                        <option value="administrador">Administrador</option>
                     </select>
                     <button type="submit">Registrarse</button>
                 </form>

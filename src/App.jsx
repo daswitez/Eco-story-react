@@ -4,20 +4,19 @@ import InteractiveSection from './components/InteractiveSection.jsx';
 import TopDonors from './components/TopDonors.jsx';
 import BenefitsSection from './components/BenefitsSection.jsx';
 import FundraisingPage from './pages/FundraisingPage.jsx';
+import HelpCenter from './pages/HelpCenter.jsx';
+import TipsPage from './pages/TipsPage.jsx';
+import ProjectsPage from './pages/ProjectsPage.jsx';
+import Footer from './components/Footer.jsx';
+import Register from './pages/Register.jsx';
+import Login from './pages/Login.jsx';
 import UserProfile from './pages/Profile.jsx';
-import HelpCenter from "./pages/HelpCenter.jsx";
-import TipsPage from "./pages/TipsPage.jsx";
-import ProjectsPage from "./pages/ProjectsPage.jsx";
-import Footer from "./components/Footer.jsx";
-import Register from "./pages/Register.jsx";
-import Login from "./pages/Login.jsx";
 
 function App() {
     return (
         <Router>
             <Header />
             <Routes>
-                {/* Ruta para la página principal */}
                 <Route
                     path="/"
                     element={
@@ -29,7 +28,6 @@ function App() {
                         </div>
                     }
                 />
-                {/* Ruta para la página de Recaudación de Fondos */}
                 <Route path="/fundraising" element={<FundraisingPage />} />
                 <Route path="/help-center" element={<HelpCenter />} />
                 <Route path="/tips-center" element={<TipsPage />} />

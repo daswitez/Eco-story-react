@@ -1,40 +1,45 @@
-import React from 'react';
-import '../styles/profile.css'; // Ajusta la ruta si es necesario
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import "../styles/profile.css";
 
-function UserProfile() {
+const UserProfile = () => {
+    const { user } = useAuth(); // Acceder al usuario autenticado desde el contexto
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/login"); // Redirige al login si no hay un usuario autenticado
+        }
+    }, [user, navigate]);
+
+    if (!user) return <p>Cargando...</p>; // Mientras se redirige, muestra un mensaje temporal
+
     return (
         <main className="profile-section">
             <div className="profile-header">
                 <img
-                    src="https://via.placeholder.com/150"
+                    src={user.profilePicture || "https://via.placeholder.com/150"} // Placeholder si no hay foto
                     alt="Foto de perfil"
                     className="profile-picture"
                 />
-                <h2 className="profile-name">Juan Pérez</h2>
-                <p className="profile-role">Donador Estrella</p>
+                <h2 className="profile-name">{user.nombre || "Nombre de Usuario"}</h2>
+                <p className="profile-role">{user.rol || "Rol no disponible"}</p>
             </div>
             <section className="profile-info">
                 <h3>Información Pública</h3>
                 <div className="info-grid">
                     <div className="info-item">
                         <span className="info-label">Nombre:</span>
-                        <span className="info-value">Juan Pérez</span>
+                        <span className="info-value">{user.nombre || "No disponible"}</span>
                     </div>
                     <div className="info-item">
                         <span className="info-label">Email:</span>
-                        <span className="info-value">juan.perez@email.com</span>
+                        <span className="info-value">{user.email || "No disponible"}</span>
                     </div>
                     <div className="info-item">
                         <span className="info-label">Teléfono:</span>
-                        <span className="info-value">+591 777-12345</span>
-                    </div>
-                    <div className="info-item">
-                        <span className="info-label">País:</span>
-                        <span className="info-value">Bolivia</span>
-                    </div>
-                    <div className="info-item">
-                        <span className="info-label">Última Donación:</span>
-                        <span className="info-value">$500</span>
+                        <span className="info-value">{user.telefono || "No disponible"}</span>
                     </div>
                 </div>
             </section>
@@ -42,16 +47,28 @@ function UserProfile() {
                 <h3>Editar Información</h3>
                 <form className="edit-form">
                     <label htmlFor="name">Nombre:</label>
-                    <input type="text" id="name" name="name" value="Juan Pérez" />
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        defaultValue={user.nombre || ""}
+                    />
 
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" value="juan.perez@email.com" />
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        defaultValue={user.email || ""}
+                    />
 
                     <label htmlFor="phone">Teléfono:</label>
-                    <input type="tel" id="phone" name="phone" value="+591 777-12345" />
-
-                    <label htmlFor="country">País:</label>
-                    <input type="text" id="country" name="country" value="Bolivia" />
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        defaultValue={user.telefono || ""}
+                    />
 
                     <button type="submit" className="primary-btn">
                         Guardar Cambios
@@ -60,6 +77,6 @@ function UserProfile() {
             </section>
         </main>
     );
-}
+};
 
 export default UserProfile;
