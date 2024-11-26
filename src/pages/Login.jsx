@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/auth.css";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
     const { login } = useAuth();
@@ -46,6 +46,10 @@ const Login = () => {
                     />
                     <button type="submit">Iniciar Sesión</button>
                 </form>
+                <p className="redirect-link">
+                    ¿No tienes una cuenta?{" "}
+                    <Link to="/register">Regístrate aquí</Link>
+                </p>
             </div>
         </div>
     );

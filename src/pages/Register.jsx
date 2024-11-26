@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "../styles/auth.css";
 import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Register = () => {
     const { register } = useContext(AuthContext);
@@ -74,6 +75,10 @@ const Register = () => {
                     </select>
                     <button type="submit">Registrarse</button>
                 </form>
+                <p className="redirect-link">
+                    ¿Ya tienes una cuenta?{" "}
+                    <Link to="/login">Inicia sesión aquí</Link>
+                </p>
             </div>
         </div>
     );
