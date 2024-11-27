@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/tipsPage.css";
 import Header from "../components/Header.jsx";
 import recaudaciones from "../assets/images/recaudaciones.jpg";
+import Footer from "../components/Footer.jsx";
 
 function TipsPage() {
     return (
@@ -92,9 +93,7 @@ function TipsPage() {
                 </section>
             </main>
 
-            <footer>
-                <p>EcoAcción &copy; 2024 - Todos los derechos reservados</p>
-            </footer>
+            <Footer/>
         </>
     );
 }

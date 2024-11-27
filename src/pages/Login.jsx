@@ -1,25 +1,33 @@
 import React, { useState } from "react";
-import "../styles/auth.css";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
+import "../styles/auth.css"; // Asegúrate de tener el archivo de estilos
+import { useAuth } from "../context/AuthContext"; // Contexto de autenticación
+import { Link, useNavigate } from "react-router-dom"; // Para la navegación
 
 const Login = () => {
-    const { login } = useAuth();
+    const { login } = useAuth(); // Hook para acceder al método login del contexto
     const [formData, setFormData] = useState({ email: "", password: "" });
-    const navigate = useNavigate();
+    const [error, setError] = useState(""); // Para manejar errores
+    const navigate = useNavigate(); // Hook para la navegación
 
+    // Función para manejar los cambios en los campos del formulario
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
+    // Función para manejar el envío del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await login(formData.email, formData.password);
-            alert("Inicio de sesión exitoso");
-            navigate("/profile"); // Redirigir al perfil
+
+            // Verifica que el login haya funcionado y los datos se hayan guardado en localStorage
+            console.log('Usuario guardado en localStorage:', localStorage.getItem("user"));
+            console.log('Token guardado en localStorage:', localStorage.getItem("token"));
+
+            navigate("/profile"); // Redirige a la página de perfil después de un login exitoso
         } catch (error) {
-            alert("Error al iniciar sesión. Verifica tus credenciales.");
+            setError("Error al iniciar sesión. Verifica tus credenciales.");
         }
     };
 
@@ -27,28 +35,36 @@ const Login = () => {
         <div className="auth-page">
             <div className="auth-container">
                 <h1>Iniciar Sesión</h1>
+                {error && <p className="error-message">{error}</p>} {/* Mostrar error si hay */}
                 <form onSubmit={handleSubmit}>
-                    <input
-                        name="email"
-                        type="email"
-                        placeholder="Correo"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        name="password"
-                        type="password"
-                        placeholder="Contraseña"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                    <button type="submit">Iniciar Sesión</button>
+                    <div className="input-group">
+                        <label htmlFor="email">Correo Electrónico</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label htmlFor="password">Contraseña</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <button type="submit" className="primary-btn">Iniciar Sesión</button>
                 </form>
-                <p className="redirect-link">
-                    ¿No tienes una cuenta?{" "}
-                    <Link to="/register">Regístrate aquí</Link>
+                <p>
+                    ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
                 </p>
             </div>
         </div>

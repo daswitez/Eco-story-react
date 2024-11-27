@@ -1,4 +1,6 @@
 import '../styles/fundraising.css';
+import Footer from "../components/Footer.jsx";
+import {Link} from "react-router-dom";
 
 function FundraisingPage() {
     return (
@@ -67,8 +69,12 @@ function FundraisingPage() {
             </section>
 
             <div className="start-fundraising">
-                <button className="primary-btn">Inicia tu Recaudación</button>
+                <Link to="/iniciar-recaudacion">
+                    <button className="primary-btn">Inicia tu Recaudación</button>
+                </Link>
             </div>
+            <br/>
+            <Footer/>
         </main>
     );
 }

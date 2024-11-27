@@ -1,86 +1,98 @@
-:root {
-    --green-forest: #1e5631;
-    --green-light: #a3d9a5;
-    --white: #ffffff;
-    --gray-light: #f7f7f7;
-    --text-dark: #333;
-    --text-light: #616161;
-}
-
-main {
-    margin-top: 6rem;
+/* Contenedor principal de la página */
+.projectsPage-main {
     padding: 2rem;
-    width: 100%;
-    max-width: 1200px;
+    background-color: #f4f4f4;
+    min-height: calc(100vh - 120px); /* Asegura que el contenido cubra la ventana menos el header y footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
 }
 
-main h2 {
-    font-size: 2.5rem;
+/* Sección de proyectos */
+#projectsPage-section {
     text-align: center;
+    width: 100%; /* Asegura que el contenido ocupe todo el ancho disponible */
+    max-width: 1200px; /* Define un ancho máximo para centrar la sección */
+    margin-top: 2rem;
+}
+
+/* Título de la sección */
+#projectsPage-section h2 {
+    font-size: 2.5rem;
     color: var(--green-forest);
     margin-bottom: 2rem;
+    text-align: center; /* Asegura que el texto esté centrado */
 }
 
-.proyectos-container {
+/* Contenedor de las tarjetas */
+.projectsPage-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adapta el número de columnas automáticamente */
+    gap: 2rem; /* Espaciado uniforme entre tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    align-items: start; /* Asegura que todas las tarjetas estén alineadas al principio */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
 }
 
-.proyecto {
+/* Tarjeta de proyecto */
+.projectsPage-card {
     background: var(--white);
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px; /* Ancho máximo para mantener uniformidad */
+    margin: 0 auto; /* Centra las tarjetas dentro del contenedor */
 }
 
-.proyecto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.proyecto img {
+/* Imagen de la tarjeta */
+.projectsPage-card img {
     width: 100%;
-    height: 200px;
+    height: 200px; /* Tamaño uniforme para las imágenes */
     object-fit: cover;
+    display: block; /* Elimina espacio no deseado debajo de las imágenes */
 }
 
-.proyecto-info {
-    padding: 1.5rem;
+/* Información de la tarjeta */
+.projectsPage-info {
+    padding: 1rem;
     text-align: center;
 }
 
-.proyecto-info h3 {
+/* Título dentro de la tarjeta */
+.projectsPage-info h3 {
     font-size: 1.5rem;
     color: var(--green-forest);
     margin-bottom: 1rem;
 }
 
-.proyecto-info p {
+/* Texto descriptivo de la tarjeta */
+.projectsPage-info p {
     font-size: 1rem;
-    color: var(--text-light);
+    color: var(--text-dark);
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
 
-.btn-donar {
-    background: var(--green-forest);
+/* Botón de donar */
+.projectsPage-button {
+    background-color: var(--green-forest);
     color: var(--white);
     padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-donar:hover {
-    background: var(--green-light);
+.projectsPage-button:hover {
+    background-color: var(--green-light);
+    transform: translateY(-2px);
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 1rem;
@@ -89,15 +101,17 @@ footer {
     font-size: 0.9rem;
     border-top: 1px solid #ddd;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: auto; /* Empuja el footer hacia abajo si el contenido no es suficiente */
 }
 
+/* Responsividad */
 @media (max-width: 768px) {
-    .proyecto img {
-        height: 150px;
+    .projectsPage-container {
+        grid-template-columns: 1fr; /* Una tarjeta por fila en pantallas pequeñas */
+        gap: 1.5rem; /* Espaciado más pequeño */
     }
 
-    .proyectos-container {
-        grid-template-columns: 1fr;
+    .projectsPage-card img {
+        height: 150px; /* Ajusta las imágenes en pantallas pequeñas */
     }
 }

@@ -32,52 +32,76 @@ const Register = () => {
             <div className="auth-container">
                 <h1>Registro</h1>
                 <form onSubmit={handleSubmit}>
-                    <input
-                        name="nombre"
-                        placeholder="Nombre"
-                        value={formData.nombre}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        name="email"
-                        type="email"
-                        placeholder="Correo"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        name="password"
-                        type="password"
-                        placeholder="Contraseña"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        name="telefono"
-                        type="text"
-                        placeholder="Teléfono"
-                        value={formData.telefono}
-                        onChange={handleChange}
-                        required
-                    />
-                    <select
-                        name="rol"
-                        value={formData.rol}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="">Seleccionar Rol</option>
-                        <option value="usuario">Usuario</option>
-                        <option value="administrador">Administrador</option>
-                    </select>
-                    <button type="submit">Registrarse</button>
+                    <div className="input-group">
+                        <label htmlFor="nombre">Nombre</label>
+                        <input
+                            name="nombre"
+                            id="nombre"
+                            placeholder="Nombre"
+                            value={formData.nombre}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label htmlFor="email">Correo Electrónico</label>
+                        <input
+                            name="email"
+                            id="email"
+                            type="email"
+                            placeholder="Correo"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label htmlFor="password">Contraseña</label>
+                        <input
+                            name="password"
+                            id="password"
+                            type="password"
+                            placeholder="Contraseña"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label htmlFor="telefono">Teléfono</label>
+                        <input
+                            name="telefono"
+                            id="telefono"
+                            type="text"
+                            placeholder="Teléfono"
+                            value={formData.telefono}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <label htmlFor="rol">Rol</label>
+                        <select
+                            name="rol"
+                            id="rol"
+                            value={formData.rol}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Seleccionar Rol</option>
+                            <option value="usuario">Usuario</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" className="primary-btn">Registrarse</button>
                 </form>
                 <p className="redirect-link">
-                    ¿Ya tienes una cuenta?{" "}
-                    <Link to="/login">Inicia sesión aquí</Link>
+                    ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión aquí</Link>
                 </p>
             </div>
         </div>

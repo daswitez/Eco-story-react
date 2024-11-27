@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/helpCenter.css";
+import Footer from "../components/Footer.jsx";
 import project1 from "../assets/images/project1.jpg";
 import project2 from "../assets/images/project2.jpg";
 import project3 from "../assets/images/project3.jpg";
@@ -91,9 +92,7 @@ function HelpCenter() {
                     </div>
                 </section>
             </main>
-            <footer>
-                <p>EcoAcción &copy; 2024 - Todos los derechos reservados</p>
-            </footer>
+            <Footer />
         </>
     );
 }
