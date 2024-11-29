@@ -45,6 +45,9 @@ function Header() {
                     <Link to="/help-center" className="nav-link" onClick={closeMenu}>Centro de Ayuda</Link>
                     <Link to="/tips-center" className="nav-link" onClick={closeMenu}>Consejos</Link>
                     <Link to="/projects" className="nav-link" onClick={closeMenu}>Proyectos</Link>
+                    <Link to="/sugerencias" className="nav-link" onClick={closeMenu}>Sugerencias</Link>
+                    <Link to="/detalles" className="nav-link" onClick={closeMenu}>detalles</Link>
+
 
                     {/* Enlace al perfil */}
                     <Link to="/profile" className="nav-link profile-link" onClick={closeMenu}>

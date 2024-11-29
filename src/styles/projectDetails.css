@@ -1,0 +1,129 @@
+.project-details-section {
+    padding: 4rem;
+    max-width: 900px;
+    margin: 5rem auto;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    animation: fadeIn 0.8s ease-in-out;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-header {
+    text-align: center;
+    position: relative;
+}
+
+.project-header h1 {
+    font-size: 3rem;
+    color: var(--green-forest);
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.project-header .underline {
+    width: 80px;
+    height: 5px;
+    background: var(--green-bright);
+    margin: 1rem auto;
+    animation: slideIn 1s ease-out;
+}
+
+/* Contenedor de imagen */
+.project-image-container {
+    margin-top: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.project-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-image-container img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-left: 5px solid var(--green-bright);
+    background: var(--gray-light);
+    border-radius: 10px;
+}
+
+.project-info h3 {
+    font-size: 1.6rem;
+    color: var(--green-forest);
+    margin-bottom: 1rem;
+}
+
+.project-info p {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.action-button {
+    display: block;
+    width: 80%;
+    margin: 2rem auto 0;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    color: var(--white);
+    background: var(--green-light);
+    border: none;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.action-button:hover {
+    background: var(--green-bright);
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.action-button:active {
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}

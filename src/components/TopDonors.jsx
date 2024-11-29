@@ -1,18 +1,27 @@
+import React, { useState, useEffect } from 'react';
 import '../styles/topDonors.css';
 
 function TopDonors() {
-    const donors = [
-        { rank: 1, name: 'Ana Fernández', amount: '$10,000' },
-        { rank: 2, name: 'Carlos Rojas', amount: '$8,500' },
-        { rank: 3, name: 'María López', amount: '$7,800' },
-        { rank: 4, name: 'Javier Cruz', amount: '$6,700' },
-        { rank: 5, name: 'Luisa Méndez', amount: '$5,500' },
-        { rank: 6, name: 'Fernando Torres', amount: '$4,200' },
-        { rank: 7, name: 'Claudia Vargas', amount: '$3,900' },
-        { rank: 8, name: 'Pablo González', amount: '$3,700' },
-        { rank: 9, name: 'Elena Castillo', amount: '$3,500' },
-        { rank: 10, name: 'Ricardo Morales', amount: '$3,000' },
-    ];
+    const [donors, setDonors] = useState([]);
+
+    useEffect(() => {
+        const fetchDonors = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/donaciones/top-donantes'); // Cambia la URL según tu configuración
+                const data = await response.json();
+                const formattedDonors = data.map((donor, index) => ({
+                    rank: index + 1,
+                    name: donor.Usuario.nombre,
+                    amount: `$${donor.totalDonado}`
+                }));
+                setDonors(formattedDonors);
+            } catch (error) {
+                console.error('Error fetching donors:', error);
+            }
+        };
+
+        fetchDonors();
+    }, []);
 
     return (
         <section className="top-donors-section">

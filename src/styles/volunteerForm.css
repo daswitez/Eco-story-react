@@ -1,0 +1,64 @@
+.volunteer-form-section {
+    padding: 4rem 2rem;
+    background: var(--light-gray);
+    text-align: center;
+    border-top: 2px solid var(--gray-dark);
+}
+
+.volunteer-form-section h2 {
+    font-size: 2.5rem;
+    color: var(--green-forest);
+    margin-bottom: 1rem;
+}
+
+.volunteer-form-section p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.volunteer-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.volunteer-form .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid var(--gray-dark);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.volunteer-form .form-group input:focus {
+    border-color: var(--green-bright);
+    box-shadow: 0 0 8px var(--green-bright);
+    outline: none;
+}
+
+.submit-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: var(--green-bright);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--shadow-dark);
+}
+
+.submit-button:hover {
+    background: var(--green-light);
+    transform: scale(1.05);
+}
+
+.submit-button:active {
+    transform: scale(1);
+    box-shadow: var(--shadow-light);
+}

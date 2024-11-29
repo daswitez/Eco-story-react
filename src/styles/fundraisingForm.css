@@ -1,42 +1,125 @@
+/* Comprehensive Layout with Clear Separation */
+body, html {
+    margin: 2;
+    padding: 0;
+    background-color: #f4f6f9;
+}
+
 .fundraising-form-section {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(10vh - 20px); /* Significant vertical space */
+    padding: 10px 30px; /* Large vertical padding */
+    margin-top: 100px; /* Push form further down */
+    background-color: transparent;
+}
+
+.fundraising-form {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width: 30%;
     max-width: 600px;
-    margin: 0 auto;
+    padding: 30px;
+    margin: 2 auto;
+    position: relative;
+    z-index: 10;
 }
 
 .fundraising-form h1 {
     text-align: center;
-    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 50px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.fundraising-form h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: #4CAF50;
+    border-radius: 2px;
 }
 
 .fundraising-form .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .fundraising-form label {
     display: block;
-    font-weight: bold;
+    margin-bottom: 12px;
+    color: #34495e;
+    font-weight: 600;
+    font-size: 16px;
 }
 
-.fundraising-form input, .fundraising-form textarea {
+.fundraising-form input,
+.fundraising-form textarea,
+.fundraising-form select {
     width: 100%;
-    padding: 10px;
+    padding: 15px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.fundraising-form input:focus,
+.fundraising-form textarea:focus,
+.fundraising-form select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.fundraising-form textarea {
+    resize: vertical;
+    min-height: 180px;
 }
 
 .fundraising-form button.primary-btn {
+    width: 100%;
+    padding: 18px;
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
+    border-radius: 12px;
     font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
 }
 
 .fundraising-form button.primary-btn:hover {
     background-color: #45a049;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(76, 175, 80, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .fundraising-form-section {
+        padding: 60px 15px;
+        margin-top: 50px;
+    }
+
+    .fundraising-form {
+        padding: 40px 25px;
+        max-width: 95%;
+    }
+
+    .fundraising-form h1 {
+        font-size: 12;
+    }
 }

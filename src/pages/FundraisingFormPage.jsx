@@ -1,19 +1,28 @@
 import { useState } from 'react';
 import '../styles/fundraisingForm.css';
-import { useNavigate } from 'react-router-dom'; // Para redirigir después de crear el proyecto
+import { useNavigate } from 'react-router-dom';
 
 function FundraisingFormPage() {
+    // Define the valid project types
+    const tiposValidos = [
+        'Ecología',
+        'Reforestacion Urbana',
+        'Reforestacion Rural',
+        'Reforestacion de Manglares',
+        'Reforestacion de Bosques Secos'
+    ];
+
     const [formData, setFormData] = useState({
         nombre: '',
         descripcion: '',
         meta: '',
-        tipo: '',
+        tipo: tiposValidos[0], // Default to the first type
         ubicacion: ''
     });
 
-    const navigate = useNavigate(); // Hook de React Router para redirección
+    const navigate = useNavigate();
 
-    // Maneja los cambios en los campos del formulario
+    // Handles changes in form fields
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -22,41 +31,36 @@ function FundraisingFormPage() {
         });
     };
 
-    // Maneja la sumisión del formulario
+    // Handles form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            // Obtén el token del localStorage
+            // Get the token from localStorage
             const token = localStorage.getItem('token');
             if (!token) {
                 throw new Error('No estás autenticado');
             }
 
-            // Verifica que el token se ha recuperado correctamente
-            console.log('Token recuperado:', token);
-
-            // Realiza la solicitud POST a la API con el token en los encabezados
+            // Make the POST request to the API with the token in headers
             const response = await fetch('http://localhost:5000/api/proyectos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}` // Agrega el token en los encabezados
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(formData),
             });
 
-            // Verifica si la respuesta es exitosa
+            // Parse the response
             const data = await response.json();
 
-            console.log('Respuesta del servidor:', data); // Verifica la respuesta completa
-
             if (response.ok) {
-                // Si el proyecto se crea correctamente, muestra el mensaje y redirige
+                // If project is created successfully, show message and redirect
                 alert('Proyecto creado exitosamente');
-                navigate('/projects'); // Redirige a la página de proyectos
+                navigate('/projects');
             } else {
-                // Si hay un error, muestra el mensaje correspondiente
+                // If there's an error, show the corresponding message
                 alert('Hubo un error al crear el proyecto: ' + data.message);
             }
         } catch (error) {
@@ -106,14 +110,19 @@ function FundraisingFormPage() {
 
                 <div className="form-group">
                     <label htmlFor="tipo">Tipo de Proyecto:</label>
-                    <input
-                        type="text"
+                    <select
                         id="tipo"
                         name="tipo"
                         value={formData.tipo}
                         onChange={handleChange}
                         required
-                    />
+                    >
+                        {tiposValidos.map((tipo) => (
+                            <option key={tipo} value={tipo}>
+                                {tipo}
+                            </option>
+                        ))}
+                    </select>
                 </div>
 
                 <div className="form-group">

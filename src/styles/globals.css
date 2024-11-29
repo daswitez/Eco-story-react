@@ -2,6 +2,7 @@
 header {
     background: var(--white);
     padding: 1rem 2rem;
+    margin: 0 auto;
     position: fixed;
     width: 100%;
     top: 0;
