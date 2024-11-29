@@ -1,11 +1,22 @@
+/* Variables de color para facilitar el mantenimiento */
+:root {
+    --green-forest: #4CAF50;
+    --green-light: #66BB6A;
+    --white: #fff;
+    --text-dark: #333;
+    --text-light: #f7f7f7;
+    --border-color: #ddd;
+}
+
 /* Contenedor principal de la página */
 .projectsPage-main {
-    padding: 2rem;
-    background-color: #f4f4f4;
+    padding: 3rem 2rem;
+    background-color: #fafafa;
     min-height: calc(100vh - 120px); /* Asegura que el contenido cubra la ventana menos el header y footer */
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: flex-start;
 }
 
 /* Sección de proyectos */
@@ -21,7 +32,9 @@
     font-size: 2.5rem;
     color: var(--green-forest);
     margin-bottom: 2rem;
-    text-align: center; /* Asegura que el texto esté centrado */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Contenedor de las tarjetas */
@@ -41,8 +54,15 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 300px; /* Ancho máximo para mantener uniformidad */
+    max-width: 350px; /* Aumenta el ancho máximo de las tarjetas */
     margin: 0 auto; /* Centra las tarjetas dentro del contenedor */
+    padding: 1.5rem;
+}
+
+/* Hover en la tarjeta */
+.projectsPage-card:hover {
+    transform: translateY(-10px); /* Eleva la tarjeta al hacer hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
 }
 
 /* Imagen de la tarjeta */
@@ -51,6 +71,8 @@
     height: 200px; /* Tamaño uniforme para las imágenes */
     object-fit: cover;
     display: block; /* Elimina espacio no deseado debajo de las imágenes */
+    border-radius: 8px;
+    margin-bottom: 1rem; /* Espacio debajo de la imagen */
 }
 
 /* Información de la tarjeta */
@@ -64,6 +86,7 @@
     font-size: 1.5rem;
     color: var(--green-forest);
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 /* Texto descriptivo de la tarjeta */
@@ -72,9 +95,17 @@
     color: var(--text-dark);
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    min-height: 60px; /* Asegura que la descripción tenga una altura mínima */
 }
 
-/* Botón de donar */
+/* Botones */
+.projectsPage-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Botón de donar y ver detalles */
 .projectsPage-button {
     background-color: var(--green-forest);
     color: var(--white);
@@ -85,8 +116,10 @@
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 48%; /* Hace que los botones tengan el mismo ancho */
 }
 
+/* Hover de los botones */
 .projectsPage-button:hover {
     background-color: var(--green-light);
     transform: translateY(-2px);
@@ -99,9 +132,15 @@ footer {
     background: var(--white);
     color: var(--text-light);
     font-size: 0.9rem;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-color);
     width: 100%;
     margin-top: auto; /* Empuja el footer hacia abajo si el contenido no es suficiente */
+}
+
+/* Estilo para la tarjeta de proyecto en vista móvil */
+.projectsPage-card {
+    margin: 1rem 0; /* Reduce el margen en pantallas pequeñas */
+    padding: 1rem;
 }
 
 /* Responsividad */
@@ -113,5 +152,18 @@ footer {
 
     .projectsPage-card img {
         height: 150px; /* Ajusta las imágenes en pantallas pequeñas */
+    }
+
+    .projectsPage-info h3 {
+        font-size: 1.3rem; /* Ajusta el tamaño del título en pantallas pequeñas */
+    }
+
+    .projectsPage-info p {
+        font-size: 0.95rem; /* Ajusta el tamaño de la descripción */
+    }
+
+    .projectsPage-button {
+        font-size: 0.9rem; /* Ajusta el tamaño del texto en los botones */
+        padding: 0.7rem 1.2rem;
     }
 }

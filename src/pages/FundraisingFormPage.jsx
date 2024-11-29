@@ -3,7 +3,6 @@ import '../styles/fundraisingForm.css';
 import { useNavigate } from 'react-router-dom';
 
 function FundraisingFormPage() {
-    // Define the valid project types
     const tiposValidos = [
         'Ecología',
         'Reforestacion Urbana',
@@ -16,13 +15,17 @@ function FundraisingFormPage() {
         nombre: '',
         descripcion: '',
         meta: '',
-        tipo: tiposValidos[0], // Default to the first type
-        ubicacion: ''
+        tipo: tiposValidos[0],
+        ubicacion: '',
+        fotos: [],
+        videos: []
     });
+
+    const [fotos, setFotos] = useState([]);
+    const [videos, setVideos] = useState([]);
 
     const navigate = useNavigate();
 
-    // Handles changes in form fields
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -31,37 +34,54 @@ function FundraisingFormPage() {
         });
     };
 
-    // Handles form submission
+    const handleFileChange = (e) => {
+        const { name, files } = e.target;
+        if (name === 'fotos') {
+            setFotos(files);
+        } else if (name === 'videos') {
+            setVideos(files);
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            // Get the token from localStorage
-            const token = localStorage.getItem('token');
-            if (!token) {
-                throw new Error('No estás autenticado');
-            }
+        const formDataToSend = new FormData();
 
-            // Make the POST request to the API with the token in headers
+        // Append text fields
+        Object.keys(formData).forEach((key) => {
+            if (key !== 'fotos' && key !== 'videos') {
+                formDataToSend.append(key, formData[key]);
+            }
+        });
+
+        // Append files
+        for (const file of fotos) {
+            formDataToSend.append('fotos', file);
+        }
+        for (const file of videos) {
+            formDataToSend.append('videos', file);
+        }
+
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) throw new Error('No estás autenticado');
+
             const response = await fetch('http://localhost:5000/api/proyectos', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify(formData),
+                body: formDataToSend
             });
 
-            // Parse the response
             const data = await response.json();
 
             if (response.ok) {
-                // If project is created successfully, show message and redirect
                 alert('Proyecto creado exitosamente');
                 navigate('/projects');
             } else {
-                // If there's an error, show the corresponding message
-                alert('Hubo un error al crear el proyecto: ' + data.message);
+                alert('Error al crear proyecto: ' + data.message);
             }
         } catch (error) {
             console.error('Error en la solicitud:', error);
@@ -138,7 +158,33 @@ function FundraisingFormPage() {
                 </div>
 
                 <div className="form-group">
-                    <button type="submit" className="primary-btn">Crear Proyecto</button>
+                    <label htmlFor="fotos">Subir Fotos (máximo 5):</label>
+                    <input
+                        type="file"
+                        id="fotos"
+                        name="fotos"
+                        accept="image/jpeg, image/png, image/gif"
+                        multiple
+                        onChange={handleFileChange}
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="videos">Subir Videos (máximo 3):</label>
+                    <input
+                        type="file"
+                        id="videos"
+                        name="videos"
+                        accept="video/mp4, video/mpeg"
+                        multiple
+                        onChange={handleFileChange}
+                    />
+                </div>
+
+                <div className="form-group">
+                    <button type="submit" className="primary-btn">
+                        Crear Proyecto
+                    </button>
                 </div>
             </form>
         </main>

@@ -46,7 +46,6 @@ function Header() {
                     <Link to="/tips-center" className="nav-link" onClick={closeMenu}>Consejos</Link>
                     <Link to="/projects" className="nav-link" onClick={closeMenu}>Proyectos</Link>
                     <Link to="/sugerencias" className="nav-link" onClick={closeMenu}>Sugerencias</Link>
-                    <Link to="/detalles" className="nav-link" onClick={closeMenu}>detalles</Link>
 
 
                     {/* Enlace al perfil */}
